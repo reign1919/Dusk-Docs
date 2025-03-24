@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discord Bot ToS & Privacy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Folder at the Top -->
+  <div class="folder-container" id="folderIcon">
+    <img src="folder.png" alt="Folder Icon" class="folder-icon">
+    <div class="folder-label">Privacy Terms</div>
+  </div>
+
+  <!-- File Page (hidden) thinking about removing modals and making a bullshit txt -->
+  <div class="file-page" id="filePage">
+    <h2>Select a Document</h2>
+    <div class="files">
+      <!-- File 1: Terms of Service -->
+      <div class="file" data-file="tos">
+        
+        <img src="file.png" alt="ToS Icon" class="file-icon">
+        <span class="file-name">Terms of Service</span>
+      </div>
+      
+      <!-- File 2: Privacy Policy -->
+      <div class="file" data-file="privacy">
+        <img src="file.png" alt="Privacy Icon" class="file-icon">
+        <span class="file-name">Privacy Policy</span>
+      </div>
+
+      <!-- File 3: Additional Info -->
+      <div class="file" data-file="info">
+        <img src="file.png" alt="Info Icon" class="file-icon">
+        <span class="file-name">Additional Info</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for File Content -->
+  <div class="modal" id="fileModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="modalText"></div>
+    </div>
+  </div>
+
+  <script>
+    // DOM elements
+    const folderIcon = document.getElementById('folderIcon');
+    const filePage   = document.getElementById('filePage');
+    const fileModal  = document.getElementById('fileModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalText  = document.getElementById('modalText');
+
+    // Show the file page after clicking the folder
+    folderIcon.addEventListener('click', () => {
+      folderIcon.style.display = 'none';
+      filePage.style.display   = 'block';
+    });
+
+    // TS DONT WORK TS PMO!!!!
+    document.querySelectorAll('.file').forEach(file => {
+      file.addEventListener('click', () => {
+        const fileType = file.getAttribute('data-file');
+        let content = '';
+
+        if (fileType === 'tos') {
+          content = `
+            <h2>Terms of Service</h2>
+            <p>By using our Discord bot, you agree to the following terms...</p>
+          `;
+        } else if (fileType === 'privacy') {
+          content = `
+            <h2>Privacy Policy</h2>
+            <p>We ensure your data is protected. Here's what we collect...</p>
+          `;
+        } else if (fileType === 'info') {
+          content = `
+            <h2>Additional Info</h2>
+            <p>Learn more about our policies and bot guidelines here.</p>
+          `;
+        }
+
+        modalText.innerHTML = content;
+        fileModal.style.display = 'flex'; 
+      });
+    });
+
+    // Close the modal on clicking the "X" poosiclat do something abt ts
+    closeModal.addEventListener('click', () => {
+      fileModal.style.display = 'none';
+    });
+
+    // Close the modal if clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === fileModal) {
+        fileModal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

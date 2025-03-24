@@ -1,0 +1,141 @@
+/* Body: Dark red-black gradient background */
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: radial-gradient(circle, #200000, #000000);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Folder Container */
+  .folder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  /* Actual folder image */
+  .folder-icon {
+    width: 140px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  }
+  
+  /* Folder hover glow */
+  .folder-container:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.7));
+  }
+  
+  /* Folder label styling */
+  .folder-label {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5555;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  }
+  
+  /* File Page (hidden by default) */
+  .file-page {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  .files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Each File item: {File image} [File name] */
+  .file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #111;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .file:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  }
+  
+  /* File icon size */
+  .file-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* File name styling */
+  .file-name {
+    font-size: 14px;
+    color: #ffaaaa;
+  }
+  
+  /* Modal Overlay (hidden) HOLY FUCK DO SOMETHING BIH*/
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* Modal Content */
+  .modal-content {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 80%;
+    text-align: center;
+    animation: popIn 0.5s ease-out;
+    position: relative;
+    border: 2px solid #ff0000;
+  }
+  
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  
+  /* Close Button (the "X") */
+  .close-modal {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 24px;
+    color: #ff5555;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .close-modal:hover {
+    color: #fff;
+  }
+  
